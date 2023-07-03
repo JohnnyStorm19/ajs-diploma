@@ -15,7 +15,6 @@ import { moveWithSeveral, moveWithSingle } from './move';
  * @param gameState текущий инстанс класса GameState
  * @param gamePlay текущий инстанс класса GamePlay
  * @param gameController текущий инстанс класса GameController
- * @returns возвращает действие и переключает активного игрока
  */
 
 export default class BotActionLogic {
