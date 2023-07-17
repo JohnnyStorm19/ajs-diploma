@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import checkActivePlayer from './checkActivePlayer';
 
 export function moveWithSeveral(state, gamePlay, gameController, botTeam, moversArr) {
@@ -11,7 +12,7 @@ export function moveWithSeveral(state, gamePlay, gameController, botTeam, movers
   });
   gamePlay.redrawPositions([...state.team.playerTeam, ...state.team.botTeam]);
   state.currentPlayer = 'player';
-  checkActivePlayer(state, gameController);
+  checkActivePlayer(state, gameController, gamePlay);
 }
 
 export function moveWithSingle(state, gamePlay, gameController, botTeam, moversArr) {
@@ -24,5 +25,5 @@ export function moveWithSingle(state, gamePlay, gameController, botTeam, moversA
   });
   gamePlay.redrawPositions([...state.team.playerTeam, ...state.team.botTeam]);
   state.currentPlayer = 'player';
-  checkActivePlayer(state, gameController);
+  checkActivePlayer(state, gameController, gamePlay);
 }

@@ -1,5 +1,19 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable max-len */
+
+/**
+ * Функция определяет атаку персонажа бота
+ * Параметры функции:
+ * @param state принимает текущее состояние игры
+ * @param gamePlay принимает текущее свойство gamePlay
+ * @param gameController принимает текущее свойство gameController
+ * @param playerTeam массив из инстансов класса PositionedCharacter (character, position), т.е текущая команда игрока
+ * @param botTeam массив из инстансов класса PositionedCharacter (character, position), т.е текущая команда бота
+ * @param attackersArr массив из персонажей бота, которые могут атаковать в данный момент
+ */
+
 import checkActivePlayer from './checkActivePlayer';
+import checkHealth from './checkHealth';
 
 export function attackWithSeveral(state, gamePlay, gameController, playerTeam, botTeam, attackersArr) {
   const randomIndex = Math.floor(Math.random() * attackersArr.length);
@@ -11,11 +25,13 @@ export function attackWithSeveral(state, gamePlay, gameController, playerTeam, b
     state.team.playerTeam.forEach((obj) => {
       if (obj.position === targetObj.position) {
         obj.character.health -= damage;
+        Number(obj.character.health.toFixed(1));
+        checkHealth(state, gameController);
       }
     });
     gamePlay.redrawPositions([...state.team.playerTeam, ...state.team.botTeam]);
-    state.currentPlayer = 'bot';
-    checkActivePlayer(state, gameController);
+    state.currentPlayer = 'player';
+    checkActivePlayer(state, gameController, gamePlay);
   });
 }
 
@@ -28,10 +44,12 @@ export function attackWithSingle(state, gamePlay, gameController, playerTeam, bo
     state.team.playerTeam.forEach((obj) => {
       if (obj.position === targetObj.position) {
         obj.character.health -= damage;
+        Number(obj.character.health.toFixed(1));
+        checkHealth(state, gameController);
       }
     });
     gamePlay.redrawPositions([...state.team.playerTeam, ...state.team.botTeam]);
     state.currentPlayer = 'player';
-    checkActivePlayer(state, gameController);
+    checkActivePlayer(state, gameController, gamePlay);
   });
 }

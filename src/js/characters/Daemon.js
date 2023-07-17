@@ -1,5 +1,5 @@
 /* eslint-disable no-underscore-dangle */
-import Character from '../Character';
+import Character from './Character';
 
 export default class Daemon extends Character {
   constructor(level, type = 'daemon') {
@@ -11,14 +11,14 @@ export default class Daemon extends Character {
     this.defence = 10;
   }
 
-  get type() {
-    return this._type;
+  get _type() {
+    return this.type;
   }
 
-  set type(value) {
+  set _type(value) {
     if (value !== 'daemon') {
       throw new Error('Invalid type for daemon');
     }
-    this._type = value;
+    this.type = value;
   }
 }

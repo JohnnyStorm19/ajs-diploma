@@ -1,9 +1,13 @@
+/* eslint-disable no-console */
+/* eslint-disable no-param-reassign */
 /* eslint-disable max-len */
-import { attackWithSeveral, attackWithSingle } from './attack';
-import calculateCellforAction from './calculateCellForAction';
-import calculateCellsForAttack from './calculateCellsForAttack';
-import calculateCellsForMove from './calculateCellsForMove';
-import { moveWithSeveral, moveWithSingle } from './move';
+import { attackWithSeveral, attackWithSingle } from '../Modules/botAttack';
+
+import calculateCellsForAttack from '../Modules/calculateCellsForAttack';
+import calculateCellsForMove from '../Modules/calculateCellsForMove';
+import calculateCellForAction from '../Modules/calculateCellForAction';
+
+import { moveWithSeveral, moveWithSingle } from '../Modules/botMove';
 
 /**
  * Класс определяет поведение персонажа бота
@@ -78,7 +82,7 @@ export default class BotActionLogic {
           toInfo.currentCell = this.botTeam[i].position;
           toInfo.currentType = this.botTeam[i].character.type;
           // определяем клетку оптимальную клетку для движения с помощью функции calculateCellforAction
-          toInfo.cellForAction = calculateCellforAction(this.botTeam[i].character, this.playerTeam, this.gamePlay, this.state);
+          toInfo.cellForAction = calculateCellForAction(this.botTeam[i].character, this.playerTeam, this.gamePlay, this.state);
         }
         this.botTeam[i].character.info.push(toInfo);
       }

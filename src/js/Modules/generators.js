@@ -1,4 +1,5 @@
-import GamePlay from './GamePlay';
+/* eslint-disable no-console */
+import GamePlay from '../Services/GamePlay';
 import PositionedCharacter from './PositionedCharacter';
 
 /**
@@ -15,7 +16,14 @@ export function* characterGenerator(allowedTypes, maxLevel) {
   // TODO: write logic here
   const randomCharType = Math.floor(Math.random() * allowedTypes.length);
   const randomLevel = Math.floor(Math.random() * maxLevel) + 1;
-  yield new allowedTypes[randomCharType](randomLevel);
+  const char = new allowedTypes[randomCharType](1);
+  let count = randomLevel - 1;
+  while (count > 0) {
+    char.levelUp();
+    console.log('level up!');
+    count -= 1;
+  }
+  yield char;
 }
 
 /**
@@ -67,6 +75,14 @@ export function generatePositionedCharacter(teamSide, charsArr, maxLevel, charac
   const redrawArr = [];
 
   team.forEach((char, index) => {
+    // if (char.level > 1) {
+    //   let count = char.level - 1;
+    //   while (count > 0) {
+    //     char.levelUp();
+    //     console.log('level up!')
+    //     count -= 1;
+    //   }
+    // }
     let position = generatePosition(teamSide);
     const isThere = positionArr.includes(position);
     while (isThere) {

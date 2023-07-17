@@ -1,3 +1,6 @@
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-mixed-operators */
+/* eslint-disable max-len */
 /**
  * Базовый класс, от которого наследуются классы персонажей
  * @property level - уровень персонажа, от 1 до 4
@@ -21,7 +24,20 @@ export default class Character {
     this.attack = 0;
     this.defence = 0;
     this.health = 100;
-    this.type = type;
+    this._type = type;
     // TODO: выбросите исключение, если кто-то использует "new Character()"
+  }
+
+  levelUp() {
+    const attackAfter = Math.max(this.attack, this.attack * (80 + this.health) / 100);
+    const defenceAfter = Math.max(this.defence, this.defence * (80 + this.health) / 100);
+    this.attack = Math.round(attackAfter);
+    this.defence = Math.round(defenceAfter);
+
+    if (this.health !== 100) {
+      this.health += 80;
+    }
+    if (this.health > 100) this.health = 100;
+    this.level += 1;
   }
 }

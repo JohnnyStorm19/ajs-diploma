@@ -1,4 +1,4 @@
-import { calcTileType } from '../utils';
+import { calcTileType } from '../Modules/utils';
 
 test.each([
   [0, 8, 'top-left'],

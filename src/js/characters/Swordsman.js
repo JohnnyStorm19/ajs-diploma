@@ -1,5 +1,5 @@
 /* eslint-disable no-underscore-dangle */
-import Character from '../Character';
+import Character from './Character';
 
 export default class Swordsman extends Character {
   constructor(level, type = 'swordsman') {
@@ -11,14 +11,14 @@ export default class Swordsman extends Character {
     this.defence = 10;
   }
 
-  get type() {
-    return this._type;
+  get _type() {
+    return this.type;
   }
 
-  set type(value) {
+  set _type(value) {
     if (value !== 'swordsman') {
       throw new Error('Invalid type for swordsman');
     }
-    this._type = value;
+    this.type = value;
   }
 }

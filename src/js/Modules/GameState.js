@@ -1,10 +1,6 @@
+/* eslint-disable class-methods-use-this */
+/* eslint-disable no-param-reassign */
 /* eslint-disable max-len */
-import Bowman from './characters/Bowman';
-import Swordsman from './characters/Swordsman';
-import Magician from './characters/Magician';
-import Vampire from './characters/Vampire';
-import Undead from './characters/Undead';
-import Daemon from './characters/Daemon';
 import themes from './themes';
 
 export default class GameState {
@@ -13,8 +9,6 @@ export default class GameState {
       isSelected: false, position: null, charType: null, charTeam: null,
     }; // храним состояние выбранного персонажа, его индекс и тип
     this.team = {
-      playerAllowedChars: [Bowman, Swordsman, Magician],
-      botAllowedChars: [Vampire, Daemon, Undead],
       playerTypes: ['magician', 'swordsman', 'bowman'],
       botTypes: ['undead', 'vampire', 'daemon'],
       playerTeam: null, // сгенерированная команда игрока
@@ -56,8 +50,23 @@ export default class GameState {
     };
   }
 
-  static from(object) {
-    // TODO: create object
-    return null;
+  isUserCharacter(char) {
+    return this.team.playerTypes.includes(char.type);
   }
+
+  selectChar(gamePlay, gameState, index, type, team) {
+    if (gameState.selected.isSelected) {
+      gamePlay.deselectCell(gameState.selected.position);
+    }
+    gamePlay.selectCell(index);
+    gameState.selected = {
+      isSelected: true, position: index, charType: type, charTeam: team,
+    };
+  }
+
+  // static from(object) {
+  //   // TODO: create object
+  //   this.currentState = object;
+  //   return null;
+  // }
 }

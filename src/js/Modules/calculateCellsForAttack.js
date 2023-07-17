@@ -4,14 +4,14 @@ export default function calculateCellsForAttack(gamePlay, selectedIndex, charTyp
   const cellsForActions = [];
   const startCell = 0;
   const endCell = boardSize ** 2 - 1;
-  const midCol = selectedIndex % boardSize; // ряд выбранного персонажа
+  const midCol = selectedIndex % boardSize; // столбец выбранного персонажа
   let leftCol = midCol - charTypeAttackNumber; // левая граница
   let rightCol = midCol + charTypeAttackNumber; // правая граница
 
   if (leftCol < 0) leftCol = 0;
   if (rightCol > (boardSize - 1)) rightCol = boardSize - 1;
 
-  let min = selectedIndex - leftCol - boardSize * charTypeAttackNumber; // минимальная клетка для атаки
+  let min = selectedIndex - charTypeAttackNumber - boardSize * charTypeAttackNumber; // минимальная клетка для атаки
   if (min <= startCell) {
     min = startCell;
   }

@@ -1,5 +1,7 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable class-methods-use-this */
 /* eslint-disable no-alert */
-import { calcHealthLevel, calcTileType } from './utils';
+import { calcHealthLevel, calcTileType } from '../Modules/utils';
 
 export default class GamePlay {
   constructor() {
@@ -39,6 +41,7 @@ export default class GamePlay {
       <div class="board-container">
         <div data-id="board" class="board"></div>
       </div>
+      <div class="console"></div>
     `;
 
     this.newGameEl = this.container.querySelector('[data-id=action-restart]');
@@ -48,6 +51,10 @@ export default class GamePlay {
     this.newGameEl.addEventListener('click', (event) => this.onNewGameClick(event));
     this.saveGameEl.addEventListener('click', (event) => this.onSaveGameClick(event));
     this.loadGameEl.addEventListener('click', (event) => this.onLoadGameClick(event));
+
+    this.newGameEl.addEventListener('mouseenter', () => this.onEnterControllerBtn(this.newGameEl));
+    this.saveGameEl.addEventListener('mouseenter', () => this.onEnterControllerBtn(this.saveGameEl));
+    this.loadGameEl.addEventListener('mouseenter', () => this.onEnterControllerBtn(this.loadGameEl));
 
     this.boardEl = this.container.querySelector('[data-id=board]');
 
@@ -62,6 +69,15 @@ export default class GamePlay {
     }
 
     this.cells = Array.from(this.boardEl.children);
+  }
+
+  /**
+   * Add callback to mouse enter event for controller block buttons
+   *
+   * @param element - current element (newGameEl / loadGameEl / saveGameEl)
+   */
+  onEnterControllerBtn(element) {
+    element.style.cursor = 'pointer';
   }
 
   /**

@@ -1,7 +1,7 @@
 import Bowman from '../characters/Bowman';
 import Magician from '../characters/Magician';
 import Swordsman from '../characters/Swordsman';
-import { generateTeam } from '../generators';
+import { generateTeam } from '../Modules/generators';
 
 test('team generation works properly', () => {
   const types = [Bowman, Magician, Swordsman];
