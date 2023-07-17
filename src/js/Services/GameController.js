@@ -99,8 +99,6 @@ export default class GameController {
       botLogic.checkForMove();
       botLogic.move();
     }
-    console.log('после преобразования', botTeam);
-    console.log('botLogicInstance: ', botLogic);
   }
 
   onCellClick(index) {

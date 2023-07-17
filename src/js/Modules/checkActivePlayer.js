@@ -12,11 +12,7 @@ export default function checkActivePlayer(state, gameController, gamePlay) {
   state.selected = {
     isSelected: false, position: null, charType: null, charTeam: null,
   };
-  if (state.currentPlayer === 'player') {
-    console.log('СМЕНИЛСЯ НА ИГРОКА');
-  }
   if (state.currentPlayer === 'bot') {
-    console.log('СМЕНИЛСЯ НА БОТА');
     setTimeout(() => {
       gameController.botAction(state.team.botTeam);
     }, 3000);

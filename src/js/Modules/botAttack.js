@@ -12,6 +12,7 @@
  * @param attackersArr массив из персонажей бота, которые могут атаковать в данный момент
  */
 
+import GamePlay from '../Services/GamePlay';
 import checkActivePlayer from './checkActivePlayer';
 import checkHealth from './checkHealth';
 
@@ -31,6 +32,7 @@ export function attackWithSeveral(state, gamePlay, gameController, playerTeam, b
     });
     gamePlay.redrawPositions([...state.team.playerTeam, ...state.team.botTeam]);
     state.currentPlayer = 'player';
+    GamePlay.showMessage('Ход игрока');
     checkActivePlayer(state, gameController, gamePlay);
   });
 }
