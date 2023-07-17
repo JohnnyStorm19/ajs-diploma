@@ -182,18 +182,17 @@ export default class GameController {
   }
 
   onSaveGameClick() {
-    console.log(this.state);
+    GamePlay.showMessage('Данные успешно сохранены!');
     localStorage.clear();
-    console.log('Save btn pushed!');
     this.gameStateService.save(this.state);
-
-    console.log('State has saved to localStorage!');
   }
 
   onLoadGameClick() {
     if (!localStorage.getItem('state')) {
+      GamePlay.showMessage('Сохранения не найдены!');
       return;
     }
+    GamePlay.showMessage('Игра успешно загружена!');
     const state = this.gameStateService.load();
     console.log('before', state, this.state);
 
