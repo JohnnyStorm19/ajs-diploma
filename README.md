@@ -1,3 +1,5 @@
+# https://johnnystorm19.github.io/ajs-diploma/
+
 # Дипломное задание к курсу «Продвинутый JavaScript». Retro Game
 
 ###### tags: `netology` `advanced js`
