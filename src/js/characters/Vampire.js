@@ -2,11 +2,8 @@
 import Character from './Character';
 
 export default class Vampire extends Character {
-  constructor(level, type = 'vampire') {
-    if (type !== 'vampire') {
-      throw new Error('Invalid type for vampire');
-    }
-    super(level, type);
+  constructor(level) {
+    super(level, 'vampire');
     this.attack = 25;
     this.defence = 25;
   }

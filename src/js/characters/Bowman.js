@@ -2,11 +2,8 @@
 import Character from './Character';
 
 export default class Bowman extends Character {
-  constructor(level, type = 'bowman') {
-    if (type !== 'bowman') {
-      throw new Error('Invalid type for bowman');
-    }
-    super(level, type);
+  constructor(level) {
+    super(level, 'bowman');
     this.attack = 25;
     this.defence = 25;
   }

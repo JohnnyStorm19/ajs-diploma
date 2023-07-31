@@ -2,11 +2,8 @@
 import Character from './Character';
 
 export default class Daemon extends Character {
-  constructor(level, type = 'daemon') {
-    if (type !== 'daemon') {
-      throw new Error('Invalid type for daemon');
-    }
-    super(level, type);
+  constructor(level) {
+    super(level, 'daemon');
     this.attack = 10;
     this.defence = 10;
   }
