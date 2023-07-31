@@ -1,5 +1,7 @@
 # https://johnnystorm19.github.io/ajs-diploma/
 
+[![Netology AHJ](https://github.com/JohnnyStorm19/ajs-diploma/actions/workflows/web.yml/badge.svg)](https://github.com/JohnnyStorm19/ajs-diploma/actions/workflows/web.yml)
+
 # Дипломное задание к курсу «Продвинутый JavaScript». Retro Game
 
 ## Предыстория
